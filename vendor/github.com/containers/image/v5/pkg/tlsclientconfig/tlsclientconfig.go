@@ -89,13 +89,13 @@ func hasFile(files []os.DirEntry, name string) bool {
 // NewTransport Creates a default transport
 func NewTransport() *http.Transport {
 	direct := &net.Dialer{
-		Timeout:   30 * time.Second,
+		Timeout:   90 * time.Second,
 		KeepAlive: 30 * time.Second,
 	}
 	tr := &http.Transport{
 		Proxy:               http.ProxyFromEnvironment,
 		DialContext:         direct.DialContext,
-		TLSHandshakeTimeout: 10 * time.Second,
+		TLSHandshakeTimeout: 500 * time.Second,
 		IdleConnTimeout:     90 * time.Second,
 		MaxIdleConns:        100,
 	}
